@@ -56,7 +56,7 @@ const Header = () => {
             <img 
               src="/logo.png" 
               alt="BlokSwap" 
-              className="w-12 h-12 sm:w-14 sm:h-14 object-contain"
+              className="h-8 sm:h-10 w-auto object-contain"
             />
           </Link>
 
