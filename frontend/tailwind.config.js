@@ -8,8 +8,8 @@ module.exports = {
   theme: {
         extend: {
                 fontFamily: {
-                        sans: ['Roboto', 'sans-serif'],
-                        roboto: ['Roboto', 'sans-serif'],
+                        sans: ['"Roboto Condensed"', 'sans-serif'],
+                        roboto: ['"Roboto Condensed"', 'sans-serif'],
                 },
                 borderRadius: {
                         lg: 'var(--radius)',

@@ -24,7 +24,7 @@ export const TOKENS = [
     id: 'wbcc',
     symbol: 'WBCC',
     name: 'Wrapped BCC',
-    address: '0x1111111111111111111111111111111111111111',
+    address: '0x0Ed138DaB3f9beEfeA779Af0b62fB3b2A220C4bc',
     decimals: 18,
     logo: 'https://api.dicebear.com/7.x/shapes/svg?seed=wbcc&backgroundColor=B8860B',
     price: 2.45,

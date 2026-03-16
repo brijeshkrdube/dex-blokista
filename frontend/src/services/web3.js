@@ -14,13 +14,14 @@ export const BLOKISTA_NETWORK = {
   blockExplorerUrls: ['https://bccscan.com']
 };
 
-// Contract Addresses on Blokista Mainnet (Placeholder - update after deployment)
+// Contract Addresses on Blokista Mainnet
 export const CONTRACT_ADDRESSES = {
-  WBCC: '0x0000000000000000000000000000000000000001',  // Placeholder - update after deployment
-  FACTORY: '0x0000000000000000000000000000000000000002', // Placeholder - update after deployment
-  ROUTER: '0x0000000000000000000000000000000000000003',  // Placeholder - update after deployment
-  // Token addresses
-  USDT: '0x0000000000000000000000000000000000000004'    // Placeholder - update after deployment
+  WBCC: '0x0Ed138DaB3f9beEfeA779Af0b62fB3b2A220C4bc',
+  FACTORY: '0xf29787D28e9B2B94ce8bdAbF8f768eaaDb29234b',
+  ROUTER: '0x07683f7Fb2Aa99fE4094b87baBd2bc254f19b270',
+  PAIR: '0xaDb89D867a5962cC6494865CfE4f20AA52AaDe40',
+  // Token addresses (update after deploying tokens)
+  USDT: '0x0000000000000000000000000000000000000000'
 };
 
 // ERC20 ABI for token interactions

@@ -4,12 +4,13 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-# Placeholder contract addresses on Blokista Mainnet (update after deployment)
+# Deployed contract addresses on Blokista Mainnet
 CONTRACT_ADDRESSES = {
-    "WBCC": "0x0000000000000000000000000000000000000001",
-    "FACTORY": "0x0000000000000000000000000000000000000002",
-    "ROUTER": "0x0000000000000000000000000000000000000003",
-    "USDT": "0x0000000000000000000000000000000000000004"
+    "WBCC": "0x0Ed138DaB3f9beEfeA779Af0b62fB3b2A220C4bc",
+    "FACTORY": "0xf29787D28e9B2B94ce8bdAbF8f768eaaDb29234b",
+    "ROUTER": "0x07683f7Fb2Aa99fE4094b87baBd2bc254f19b270",
+    "PAIR": "0xaDb89D867a5962cC6494865CfE4f20AA52AaDe40",
+    "USDT": "0x0000000000000000000000000000000000000000"
 }
 
 # Initial token data for Blokista network
@@ -29,7 +30,7 @@ INITIAL_TOKENS = [
         "id": "wbcc",
         "symbol": "WBCC",
         "name": "Wrapped BCC",
-        "address": "0x0000000000000000000000000000000000000001",
+        "address": "0x0Ed138DaB3f9beEfeA779Af0b62fB3b2A220C4bc",
         "decimals": 18,
         "logo": "https://api.dicebear.com/7.x/shapes/svg?seed=wbcc&backgroundColor=B8860B",
         "price": 2.45,
@@ -40,7 +41,7 @@ INITIAL_TOKENS = [
         "id": "usdt",
         "symbol": "USDT",
         "name": "Tether USD",
-        "address": "0x0000000000000000000000000000000000000004",
+        "address": "0x0000000000000000000000000000000000000001",
         "decimals": 18,
         "logo": "https://api.dicebear.com/7.x/shapes/svg?seed=usdt&backgroundColor=26A17B",
         "price": 1.00,
@@ -53,8 +54,9 @@ INITIAL_TOKENS = [
 INITIAL_POOLS = [
     {
         "id": "pool1",
-        "token0_address": "0x0000000000000000000000000000000000000001",  # WBCC
-        "token1_address": "0x0000000000000000000000000000000000000004",  # USDT
+        "token0_address": "0x0Ed138DaB3f9beEfeA779Af0b62fB3b2A220C4bc",  # WBCC
+        "token1_address": "0x0000000000000000000000000000000000000001",  # USDT placeholder
+        "pair_address": "0xaDb89D867a5962cC6494865CfE4f20AA52AaDe40",
         "fee": 0.3,
         "tvl": 0,
         "volume_24h": 0,
