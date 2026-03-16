@@ -1,26 +1,26 @@
 import { ethers } from 'ethers';
 
-// PIOGOLD Network Configuration
-export const PIOGOLD_NETWORK = {
-  chainId: 42357,
-  chainIdHex: '0xa575',
-  chainName: 'PIOGOLD Mainnet',
+// Blokista Network Configuration
+export const BLOKISTA_NETWORK = {
+  chainId: 639054,
+  chainIdHex: '0x9c0ce',
+  chainName: 'Blokista Mainnet',
   nativeCurrency: {
-    name: 'PIO',
-    symbol: 'PIO',
+    name: 'BCC',
+    symbol: 'BCC',
     decimals: 18
   },
-  rpcUrls: ['https://datasheed.pioscan.com'],
-  blockExplorerUrls: ['https://pioscan.com']
+  rpcUrls: ['https://mainnet-rpc.bccscan.com'],
+  blockExplorerUrls: ['https://bccscan.com']
 };
 
-// Contract Addresses on PIOGOLD Mainnet
+// Contract Addresses on Blokista Mainnet (Placeholder - update after deployment)
 export const CONTRACT_ADDRESSES = {
-  WPIO: '0x9Da12b8CF8B94f2E0eedD9841E268631aF03aDb1',
-  FACTORY: '0x3EE7ad0FD1C17A4d62a1a214d88dcf2C04ae43E5',
-  ROUTER: '0xE2E593258a0012Af79221C518Fa058eB4fF3700A',
+  WBCC: '0x0000000000000000000000000000000000000001',  // Placeholder - update after deployment
+  FACTORY: '0x0000000000000000000000000000000000000002', // Placeholder - update after deployment
+  ROUTER: '0x0000000000000000000000000000000000000003',  // Placeholder - update after deployment
   // Token addresses
-  USDT: '0x75C681D7d00b6cDa3778535Bba87E433cA369C96'
+  USDT: '0x0000000000000000000000000000000000000004'    // Placeholder - update after deployment
 };
 
 // ERC20 ABI for token interactions
@@ -94,7 +94,7 @@ export const PAIR_ABI = [
   'event Sync(uint112 reserve0, uint112 reserve1)'
 ];
 
-// WETH/WPIO ABI (extends ERC20)
+// WETH/WBCC ABI (extends ERC20)
 export const WETH_ABI = [
   ...ERC20_ABI,
   'function deposit() external payable',
@@ -125,7 +125,7 @@ class Web3Service {
       this.provider = new ethers.providers.Web3Provider(window.ethereum);
     } else {
       // Fallback to RPC provider for read-only operations
-      this.provider = new ethers.providers.JsonRpcProvider(PIOGOLD_NETWORK.rpcUrls[0]);
+      this.provider = new ethers.providers.JsonRpcProvider(BLOKISTA_NETWORK.rpcUrls[0]);
     }
     return this.provider;
   }
@@ -138,7 +138,7 @@ class Web3Service {
     this.contracts = {
       router: new ethers.Contract(CONTRACT_ADDRESSES.ROUTER, ROUTER_ABI, signerOrProvider),
       factory: new ethers.Contract(CONTRACT_ADDRESSES.FACTORY, FACTORY_ABI, signerOrProvider),
-      wpio: new ethers.Contract(CONTRACT_ADDRESSES.WPIO, WETH_ABI, signerOrProvider)
+      wbcc: new ethers.Contract(CONTRACT_ADDRESSES.WBCC, WETH_ABI, signerOrProvider)
     };
   }
 
@@ -161,7 +161,7 @@ class Web3Service {
       this.chainId = network.chainId;
       
       // Check if on correct network
-      if (this.chainId !== PIOGOLD_NETWORK.chainId) {
+      if (this.chainId !== BLOKISTA_NETWORK.chainId) {
         await this.switchNetwork();
       }
       
@@ -183,7 +183,7 @@ class Web3Service {
     }
   }
 
-  // Switch to PIOGOLD network
+  // Switch to Blokista network
   async switchNetwork() {
     if (!this.isMetaMaskInstalled()) {
       throw new Error('MetaMask not installed');
@@ -192,7 +192,7 @@ class Web3Service {
     try {
       await window.ethereum.request({
         method: 'wallet_switchEthereumChain',
-        params: [{ chainId: PIOGOLD_NETWORK.chainIdHex }]
+        params: [{ chainId: BLOKISTA_NETWORK.chainIdHex }]
       });
     } catch (switchError) {
       // Chain not added, try to add it
@@ -201,15 +201,15 @@ class Web3Service {
           await window.ethereum.request({
             method: 'wallet_addEthereumChain',
             params: [{
-              chainId: PIOGOLD_NETWORK.chainIdHex,
-              chainName: PIOGOLD_NETWORK.chainName,
-              nativeCurrency: PIOGOLD_NETWORK.nativeCurrency,
-              rpcUrls: PIOGOLD_NETWORK.rpcUrls,
-              blockExplorerUrls: PIOGOLD_NETWORK.blockExplorerUrls
+              chainId: BLOKISTA_NETWORK.chainIdHex,
+              chainName: BLOKISTA_NETWORK.chainName,
+              nativeCurrency: BLOKISTA_NETWORK.nativeCurrency,
+              rpcUrls: BLOKISTA_NETWORK.rpcUrls,
+              blockExplorerUrls: BLOKISTA_NETWORK.blockExplorerUrls
             }]
           });
         } catch (addError) {
-          throw new Error('Failed to add PIOGOLD network');
+          throw new Error('Failed to add Blokista network');
         }
       } else {
         throw switchError;
@@ -409,7 +409,7 @@ class Web3Service {
     };
   }
 
-  // Execute swap (ETH/PIO for tokens)
+  // Execute swap (ETH/BCC for tokens)
   async swapExactETHForTokens(amountOutMin, path, value, deadline = 20) {
     if (!this.signer) throw new Error('Wallet not connected');
     
@@ -431,7 +431,7 @@ class Web3Service {
     };
   }
 
-  // Execute swap (tokens for ETH/PIO)
+  // Execute swap (tokens for ETH/BCC)
   async swapExactTokensForETH(amountIn, amountOutMin, path, deadline = 20) {
     if (!this.signer) throw new Error('Wallet not connected');
     
@@ -478,7 +478,7 @@ class Web3Service {
     };
   }
 
-  // Add liquidity (token-ETH/PIO)
+  // Add liquidity (token-ETH/BCC)
   async addLiquidityETH(token, amountTokenDesired, amountTokenMin, amountETHMin, value, deadline = 20) {
     if (!this.signer) throw new Error('Wallet not connected');
     
@@ -526,7 +526,7 @@ class Web3Service {
     };
   }
 
-  // Remove liquidity (token-ETH/PIO)
+  // Remove liquidity (token-ETH/BCC)
   async removeLiquidityETH(token, liquidity, amountTokenMin, amountETHMin, deadline = 20) {
     if (!this.signer) throw new Error('Wallet not connected');
     
@@ -549,12 +549,12 @@ class Web3Service {
     };
   }
 
-  // Wrap PIO to WPIO
-  async wrapPIO(amount) {
+  // Wrap BCC to WBCC
+  async wrapBCC(amount) {
     if (!this.signer) throw new Error('Wallet not connected');
     
-    const wpio = new ethers.Contract(CONTRACT_ADDRESSES.WPIO, WETH_ABI, this.signer);
-    const tx = await wpio.deposit({ value: amount });
+    const wbcc = new ethers.Contract(CONTRACT_ADDRESSES.WBCC, WETH_ABI, this.signer);
+    const tx = await wbcc.deposit({ value: amount });
     const receipt = await tx.wait();
     return {
       hash: tx.hash,
@@ -562,12 +562,12 @@ class Web3Service {
     };
   }
 
-  // Unwrap WPIO to PIO
-  async unwrapPIO(amount) {
+  // Unwrap WBCC to BCC
+  async unwrapBCC(amount) {
     if (!this.signer) throw new Error('Wallet not connected');
     
-    const wpio = new ethers.Contract(CONTRACT_ADDRESSES.WPIO, WETH_ABI, this.signer);
-    const tx = await wpio.withdraw(amount);
+    const wbcc = new ethers.Contract(CONTRACT_ADDRESSES.WBCC, WETH_ABI, this.signer);
+    const tx = await wbcc.withdraw(amount);
     const receipt = await tx.wait();
     return {
       hash: tx.hash,

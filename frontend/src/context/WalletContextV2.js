@@ -2,8 +2,8 @@ import React, { createContext, useContext, useState, useCallback, useEffect, use
 import { createWeb3Modal } from '@web3modal/wagmi/react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { WagmiProvider, useAccount, useDisconnect, useBalance, useChainId, useSwitchChain } from 'wagmi';
-import { wagmiConfig, projectId, piogoldChain } from '../config/walletconnect';
-import { web3Service, PIOGOLD_NETWORK } from '../services/web3';
+import { wagmiConfig, projectId, blokistaChain } from '../config/walletconnect';
+import { web3Service, BLOKISTA_NETWORK } from '../services/web3';
 import { ethers } from 'ethers';
 
 // Create QueryClient
@@ -15,8 +15,8 @@ createWeb3Modal({
   projectId,
   themeMode: 'dark',
   themeVariables: {
-    '--w3m-accent': '#f59e0b',
-    '--w3m-color-mix': '#f59e0b',
+    '--w3m-accent': '#eab308',
+    '--w3m-color-mix': '#eab308',
     '--w3m-color-mix-strength': 20,
   },
   featuredWalletIds: [
@@ -49,7 +49,7 @@ const WalletProviderInner = ({ children }) => {
   const [provider, setProvider] = useState(null);
   const [signer, setSigner] = useState(null);
   
-  const isCorrectNetwork = chainId === PIOGOLD_NETWORK.chainId;
+  const isCorrectNetwork = chainId === BLOKISTA_NETWORK.chainId;
 
   // Initialize provider and signer when connected
   useEffect(() => {
@@ -84,12 +84,13 @@ const WalletProviderInner = ({ children }) => {
       const nativeBalance = await web3Service.getNativeBalance(walletAddress);
       
       const realBalances = {
-        'pio': parseFloat(nativeBalance)
+        'bcc': parseFloat(nativeBalance)
       };
       
+      // Token addresses will be updated after deployment
       const tokenAddresses = {
-        'wpio': '0x9Da12b8CF8B94f2E0eedD9841E268631aF03aDb1',
-        'usdt': '0x75C681D7d00b6cDa3778535Bba87E433cA369C96'
+        'wbcc': '0x0000000000000000000000000000000000000001',
+        'usdt': '0x0000000000000000000000000000000000000004'
       };
       
       for (const [tokenId, tokenAddress] of Object.entries(tokenAddresses)) {
@@ -105,7 +106,7 @@ const WalletProviderInner = ({ children }) => {
       setBalances(realBalances);
     } catch (err) {
       console.error('Error loading balances:', err);
-      setBalances({ 'pio': 0, 'wpio': 0, 'usdt': 0 });
+      setBalances({ 'bcc': 0, 'wbcc': 0, 'usdt': 0 });
     }
   }, []);
 
@@ -146,7 +147,7 @@ const WalletProviderInner = ({ children }) => {
   const switchNetwork = useCallback(async () => {
     try {
       if (switchChain) {
-        await switchChain({ chainId: PIOGOLD_NETWORK.chainId });
+        await switchChain({ chainId: BLOKISTA_NETWORK.chainId });
       } else {
         await web3Service.switchNetwork();
       }
@@ -170,7 +171,7 @@ const WalletProviderInner = ({ children }) => {
     getBalance,
     switchNetwork,
     loadBalances,
-    networkConfig: PIOGOLD_NETWORK,
+    networkConfig: BLOKISTA_NETWORK,
     web3Service,
     provider,
     signer,

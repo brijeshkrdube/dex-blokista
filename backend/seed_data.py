@@ -4,34 +4,34 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-# Real contract addresses on PIOGOLD Mainnet
+# Placeholder contract addresses on Blokista Mainnet (update after deployment)
 CONTRACT_ADDRESSES = {
-    "WPIO": "0x9Da12b8CF8B94f2E0eedD9841E268631aF03aDb1",
-    "FACTORY": "0x3EE7ad0FD1C17A4d62a1a214d88dcf2C04ae43E5",
-    "ROUTER": "0xE2E593258a0012Af79221C518Fa058eB4fF3700A",
-    "USDT": "0x75C681D7d00b6cDa3778535Bba87E433cA369C96"
+    "WBCC": "0x0000000000000000000000000000000000000001",
+    "FACTORY": "0x0000000000000000000000000000000000000002",
+    "ROUTER": "0x0000000000000000000000000000000000000003",
+    "USDT": "0x0000000000000000000000000000000000000004"
 }
 
-# Initial token data for PIOGOLD network with REAL addresses
+# Initial token data for Blokista network
 INITIAL_TOKENS = [
     {
-        "id": "pio",
-        "symbol": "PIO",
-        "name": "PIOGOLD",
+        "id": "bcc",
+        "symbol": "BCC",
+        "name": "Blokista",
         "address": "0x0000000000000000000000000000000000000000",  # Native token
         "decimals": 18,
-        "logo": "https://api.dicebear.com/7.x/shapes/svg?seed=pio&backgroundColor=FFD700",
+        "logo": "https://api.dicebear.com/7.x/shapes/svg?seed=bcc&backgroundColor=DAA520",
         "price": 2.45,
         "price_change_24h": 3.24,
         "is_native": True
     },
     {
-        "id": "wpio",
-        "symbol": "WPIO",
-        "name": "Wrapped PIO",
-        "address": "0x9da12b8cf8b94f2e0eedd9841e268631af03adb1",  # Real WPIO address (lowercase)
+        "id": "wbcc",
+        "symbol": "WBCC",
+        "name": "Wrapped BCC",
+        "address": "0x0000000000000000000000000000000000000001",
         "decimals": 18,
-        "logo": "https://api.dicebear.com/7.x/shapes/svg?seed=wpio&backgroundColor=DAA520",
+        "logo": "https://api.dicebear.com/7.x/shapes/svg?seed=wbcc&backgroundColor=B8860B",
         "price": 2.45,
         "price_change_24h": 3.24,
         "is_native": False
@@ -40,7 +40,7 @@ INITIAL_TOKENS = [
         "id": "usdt",
         "symbol": "USDT",
         "name": "Tether USD",
-        "address": "0x75c681d7d00b6cda3778535bba87e433ca369c96",  # Real USDT address (lowercase)
+        "address": "0x0000000000000000000000000000000000000004",
         "decimals": 18,
         "logo": "https://api.dicebear.com/7.x/shapes/svg?seed=usdt&backgroundColor=26A17B",
         "price": 1.00,
@@ -49,12 +49,12 @@ INITIAL_TOKENS = [
     }
 ]
 
-# Initial pool data - WPIO/USDT pool
+# Initial pool data - WBCC/USDT pool
 INITIAL_POOLS = [
     {
         "id": "pool1",
-        "token0_address": "0x9da12b8cf8b94f2e0eedd9841e268631af03adb1",  # WPIO
-        "token1_address": "0x75c681d7d00b6cda3778535bba87e433ca369c96",  # USDT
+        "token0_address": "0x0000000000000000000000000000000000000001",  # WBCC
+        "token1_address": "0x0000000000000000000000000000000000000004",  # USDT
         "fee": 0.3,
         "tvl": 0,
         "volume_24h": 0,
@@ -116,9 +116,9 @@ async def seed_database():
 
 
 async def reset_and_seed():
-    """Drop existing data and reseed with real addresses"""
+    """Drop existing data and reseed with new addresses"""
     try:
-        logger.info("Resetting database with real contract addresses...")
+        logger.info("Resetting database with Blokista contract addresses...")
         
         # Drop existing collections
         await db.tokens.drop()
@@ -127,7 +127,7 @@ async def reset_and_seed():
         
         # Insert new data
         await db.tokens.insert_many(INITIAL_TOKENS)
-        logger.info(f"Inserted {len(INITIAL_TOKENS)} tokens with real addresses")
+        logger.info(f"Inserted {len(INITIAL_TOKENS)} tokens")
         
         await db.pools.insert_many(INITIAL_POOLS)
         logger.info(f"Inserted {len(INITIAL_POOLS)} pools")
@@ -141,7 +141,7 @@ async def reset_and_seed():
         await db.pools.create_index("id", unique=True)
         await db.pools.create_index([("token0_address", 1), ("token1_address", 1)])
         
-        logger.info("Database reset complete with real contract addresses!")
+        logger.info("Database reset complete with Blokista contract addresses!")
         
     except Exception as e:
         logger.error(f"Error resetting database: {e}")

@@ -52,16 +52,14 @@ const Header = () => {
     <header className="sticky top-0 z-50 bg-[#0d0d0d]/95 backdrop-blur-md border-b border-white/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
           <Link to="/" className="flex items-center gap-2 group">
             <img 
               src="/logo.png" 
-              alt="PioSwap" 
+              alt="BlokSwap" 
               className="w-12 h-12 sm:w-14 sm:h-14 object-contain"
             />
           </Link>
 
-          {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-1">
             {navItems.map((item) => {
               const Icon = item.icon;
@@ -83,15 +81,12 @@ const Header = () => {
             })}
           </nav>
 
-          {/* Right Section */}
           <div className="flex items-center gap-3">
-            {/* Network Badge */}
-            <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-xl bg-cyan-500/10 border border-cyan-500/20">
-              <div className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
-              <span className="text-cyan-400 text-sm font-medium">{networkConfig.name}</span>
+            <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-xl bg-yellow-500/10 border border-yellow-500/20">
+              <div className="w-2 h-2 rounded-full bg-yellow-400 animate-pulse" />
+              <span className="text-yellow-400 text-sm font-medium">{networkConfig.name}</span>
             </div>
 
-            {/* Wallet Button */}
             {isConnected ? (
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
@@ -99,7 +94,7 @@ const Header = () => {
                     variant="outline"
                     className="bg-white/5 border-white/10 text-white hover:bg-white/10 hover:border-white/20 rounded-xl gap-2"
                   >
-                    <div className="w-5 h-5 rounded-full bg-gradient-to-br from-cyan-400 to-teal-500" />
+                    <div className="w-5 h-5 rounded-full bg-gradient-to-br from-yellow-400 to-amber-500" />
                     {shortenAddress(address)}
                     <ChevronDown className="w-4 h-4" />
                   </Button>
@@ -139,7 +134,7 @@ const Header = () => {
             ) : (
               <Button
                 onClick={handleConnect}
-                className="bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-400 hover:to-yellow-400 text-black font-semibold rounded-xl gap-2"
+                className="bg-gradient-to-r from-yellow-500 to-amber-500 hover:from-yellow-400 hover:to-amber-400 text-black font-semibold rounded-xl gap-2"
               >
                 <Wallet className="w-4 h-4" />
                 <span className="hidden sm:inline">Connect Wallet</span>
@@ -147,7 +142,6 @@ const Header = () => {
               </Button>
             )}
 
-            {/* Mobile Menu Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="md:hidden p-2 rounded-xl text-gray-400 hover:text-white hover:bg-white/5"
@@ -158,7 +152,6 @@ const Header = () => {
         </div>
       </div>
 
-      {/* Mobile Navigation */}
       {mobileMenuOpen && (
         <div className="md:hidden border-t border-white/5 bg-[#0d0d0d]">
           <nav className="px-4 py-3 space-y-1">

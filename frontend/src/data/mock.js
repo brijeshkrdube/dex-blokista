@@ -1,32 +1,32 @@
-// Mock data for PioSwap DEX
+// Mock data for BlokSwap DEX
 
 export const NETWORK_CONFIG = {
-  name: 'PIOGOLD Mainnet',
-  rpc: 'https://datasheed.pioscan.com',
-  chainId: 42357,
-  symbol: 'PIO',
-  explorer: 'https://pioscan.com'
+  name: 'Blokista Mainnet',
+  rpc: 'https://mainnet-rpc.bccscan.com',
+  chainId: 639054,
+  symbol: 'BCC',
+  explorer: 'https://bccscan.com'
 };
 
 export const TOKENS = [
   {
-    id: 'pio',
-    symbol: 'PIO',
-    name: 'PIOGOLD',
+    id: 'bcc',
+    symbol: 'BCC',
+    name: 'Blokista',
     address: '0x0000000000000000000000000000000000000000',
     decimals: 18,
-    logo: 'https://api.dicebear.com/7.x/shapes/svg?seed=pio&backgroundColor=FFD700',
+    logo: 'https://api.dicebear.com/7.x/shapes/svg?seed=bcc&backgroundColor=DAA520',
     price: 2.45,
     priceChange: 3.24,
     isNative: true
   },
   {
-    id: 'wpio',
-    symbol: 'WPIO',
-    name: 'Wrapped PIO',
+    id: 'wbcc',
+    symbol: 'WBCC',
+    name: 'Wrapped BCC',
     address: '0x1111111111111111111111111111111111111111',
     decimals: 18,
-    logo: 'https://api.dicebear.com/7.x/shapes/svg?seed=wpio&backgroundColor=DAA520',
+    logo: 'https://api.dicebear.com/7.x/shapes/svg?seed=wbcc&backgroundColor=B8860B',
     price: 2.45,
     priceChange: 3.24
   },
@@ -51,42 +51,42 @@ export const TOKENS = [
     priceChange: 0.00
   },
   {
-    id: 'pgold',
-    symbol: 'PGOLD',
-    name: 'Pio Gold Token',
+    id: 'bgold',
+    symbol: 'BGOLD',
+    name: 'Blok Gold Token',
     address: '0x4444444444444444444444444444444444444444',
     decimals: 18,
-    logo: 'https://api.dicebear.com/7.x/shapes/svg?seed=pgold&backgroundColor=B8860B',
+    logo: 'https://api.dicebear.com/7.x/shapes/svg?seed=bgold&backgroundColor=FFD700',
     price: 156.78,
     priceChange: -1.23
   },
   {
-    id: 'peth',
-    symbol: 'PETH',
-    name: 'Pio Ethereum',
+    id: 'beth',
+    symbol: 'BETH',
+    name: 'Blok Ethereum',
     address: '0x5555555555555555555555555555555555555555',
     decimals: 18,
-    logo: 'https://api.dicebear.com/7.x/shapes/svg?seed=peth&backgroundColor=627EEA',
+    logo: 'https://api.dicebear.com/7.x/shapes/svg?seed=beth&backgroundColor=627EEA',
     price: 2320.50,
     priceChange: 0.58
   },
   {
-    id: 'pbtc',
-    symbol: 'PBTC',
-    name: 'Pio Bitcoin',
+    id: 'bbtc',
+    symbol: 'BBTC',
+    name: 'Blok Bitcoin',
     address: '0x6666666666666666666666666666666666666666',
     decimals: 8,
-    logo: 'https://api.dicebear.com/7.x/shapes/svg?seed=pbtc&backgroundColor=F7931A',
+    logo: 'https://api.dicebear.com/7.x/shapes/svg?seed=bbtc&backgroundColor=F7931A',
     price: 67234.00,
     priceChange: 1.85
   },
   {
-    id: 'pdai',
-    symbol: 'PDAI',
-    name: 'Pio DAI',
+    id: 'bdai',
+    symbol: 'BDAI',
+    name: 'Blok DAI',
     address: '0x7777777777777777777777777777777777777777',
     decimals: 18,
-    logo: 'https://api.dicebear.com/7.x/shapes/svg?seed=pdai&backgroundColor=F4B731',
+    logo: 'https://api.dicebear.com/7.x/shapes/svg?seed=bdai&backgroundColor=F4B731',
     price: 1.00,
     priceChange: 0.06
   }
@@ -95,7 +95,7 @@ export const TOKENS = [
 export const POOLS = [
   {
     id: 'pool1',
-    token0: TOKENS[0], // PIO
+    token0: TOKENS[0], // BCC
     token1: TOKENS[2], // USDT
     fee: 0.3,
     tvl: 2456789.45,
@@ -105,7 +105,7 @@ export const POOLS = [
   },
   {
     id: 'pool2',
-    token0: TOKENS[0], // PIO
+    token0: TOKENS[0], // BCC
     token1: TOKENS[3], // USDC
     fee: 0.3,
     tvl: 1876543.21,
@@ -115,7 +115,7 @@ export const POOLS = [
   },
   {
     id: 'pool3',
-    token0: TOKENS[5], // PETH
+    token0: TOKENS[5], // BETH
     token1: TOKENS[2], // USDT
     fee: 0.3,
     tvl: 5678901.23,
@@ -125,7 +125,7 @@ export const POOLS = [
   },
   {
     id: 'pool4',
-    token0: TOKENS[6], // PBTC
+    token0: TOKENS[6], // BBTC
     token1: TOKENS[2], // USDT
     fee: 0.05,
     tvl: 8765432.10,
@@ -135,8 +135,8 @@ export const POOLS = [
   },
   {
     id: 'pool5',
-    token0: TOKENS[4], // PGOLD
-    token1: TOKENS[0], // PIO
+    token0: TOKENS[4], // BGOLD
+    token1: TOKENS[0], // BCC
     fee: 1.0,
     tvl: 987654.32,
     volume24h: 98765.43,

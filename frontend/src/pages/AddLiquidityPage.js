@@ -21,14 +21,14 @@ import {
 } from 'lucide-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/ui/tabs';
 
-// Helper to display PIO instead of WPIO
+// Helper to display BCC instead of WBCC
 const getDisplayToken = (token) => {
-  if (token.symbol === 'WPIO') {
+  if (token.symbol === 'WBCC') {
     return {
       ...token,
-      symbol: 'PIO',
-      name: 'PIOGOLD',
-      logo: 'https://api.dicebear.com/7.x/shapes/svg?seed=pio&backgroundColor=FFD700'
+      symbol: 'BCC',
+      name: 'Blokista',
+      logo: 'https://api.dicebear.com/7.x/shapes/svg?seed=bcc&backgroundColor=DAA520'
     };
   }
   return token;
@@ -105,7 +105,7 @@ const AddLiquidityPage = () => {
   if (loading) {
     return (
       <div className="min-h-[calc(100vh-64px)] bg-[#0d0d0d] flex items-center justify-center">
-        <Loader2 className="w-8 h-8 text-cyan-400 animate-spin" />
+        <Loader2 className="w-8 h-8 text-yellow-400 animate-spin" />
       </div>
     );
   }
@@ -121,7 +121,7 @@ const AddLiquidityPage = () => {
     );
   }
 
-  // Display tokens (show PIO instead of WPIO)
+  // Display tokens (show PIO instead of WBCC)
   const displayToken0 = getDisplayToken(pool.token0);
   const displayToken1 = getDisplayToken(pool.token1);
 
@@ -180,8 +180,8 @@ const AddLiquidityPage = () => {
     
     try {
       // Get token addresses
-      const token0Addr = pool.token0.isNative ? CONTRACT_ADDRESSES.WPIO : pool.token0.address;
-      const token1Addr = pool.token1.isNative ? CONTRACT_ADDRESSES.WPIO : pool.token1.address;
+      const token0Addr = pool.token0.isNative ? CONTRACT_ADDRESSES.WBCC : pool.token0.address;
+      const token1Addr = pool.token1.isNative ? CONTRACT_ADDRESSES.WBCC : pool.token1.address;
       
       const decimals0 = pool.token0.decimals || 18;
       const decimals1 = pool.token1.decimals || 18;
@@ -273,8 +273,8 @@ const AddLiquidityPage = () => {
         }
         
         // Get token addresses
-        const token0Addr = pool.token0.isNative ? CONTRACT_ADDRESSES.WPIO : pool.token0.address;
-        const token1Addr = pool.token1.isNative ? CONTRACT_ADDRESSES.WPIO : pool.token1.address;
+        const token0Addr = pool.token0.isNative ? CONTRACT_ADDRESSES.WBCC : pool.token0.address;
+        const token1Addr = pool.token1.isNative ? CONTRACT_ADDRESSES.WBCC : pool.token1.address;
         
         let result;
         
@@ -333,10 +333,10 @@ const AddLiquidityPage = () => {
         <div className="bg-white/5 rounded-xl p-4 max-w-sm mx-auto">
           <div className="text-sm text-gray-400 mb-1">Pool Creator</div>
           <a 
-            href={`https://pioscan.com/address/${pool.creatorAddress}`}
+            href={`https://bccscan.com/address/${pool.creatorAddress}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-cyan-400 hover:text-amber-300 flex items-center justify-center gap-1"
+            className="text-yellow-400 hover:text-amber-300 flex items-center justify-center gap-1"
           >
             {pool.creatorAddress.slice(0, 10)}...{pool.creatorAddress.slice(-8)}
             <ExternalLink className="w-3 h-3" />
@@ -355,8 +355,8 @@ const AddLiquidityPage = () => {
     <div className="min-h-[calc(100vh-64px)] bg-[#0d0d0d] relative overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-20 left-1/4 w-[500px] h-[500px] bg-cyan-500/5 rounded-full blur-[120px]" />
-        <div className="absolute bottom-20 right-1/4 w-[400px] h-[400px] bg-orange-500/5 rounded-full blur-[100px]" />
+        <div className="absolute top-20 left-1/4 w-[500px] h-[500px] bg-yellow-500/5 rounded-full blur-[120px]" />
+        <div className="absolute bottom-20 right-1/4 w-[400px] h-[400px] bg-amber-500/5 rounded-full blur-[100px]" />
       </div>
 
       <div className="relative z-10 max-w-2xl mx-auto px-4 py-8">
@@ -419,14 +419,14 @@ const AddLiquidityPage = () => {
             <TabsList className="w-full bg-transparent border-b border-white/5 rounded-none p-0">
               <TabsTrigger
                 value="add"
-                className="flex-1 py-4 rounded-none border-b-2 border-transparent data-[state=active]:border-amber-500 data-[state=active]:text-cyan-400 data-[state=active]:bg-transparent"
+                className="flex-1 py-4 rounded-none border-b-2 border-transparent data-[state=active]:border-amber-500 data-[state=active]:text-yellow-400 data-[state=active]:bg-transparent"
               >
                 <Plus className="w-4 h-4 mr-2" />
                 Add Liquidity
               </TabsTrigger>
               <TabsTrigger
                 value="remove"
-                className="flex-1 py-4 rounded-none border-b-2 border-transparent data-[state=active]:border-amber-500 data-[state=active]:text-cyan-400 data-[state=active]:bg-transparent"
+                className="flex-1 py-4 rounded-none border-b-2 border-transparent data-[state=active]:border-amber-500 data-[state=active]:text-yellow-400 data-[state=active]:bg-transparent"
               >
                 <Minus className="w-4 h-4 mr-2" />
                 Remove Liquidity
@@ -457,10 +457,10 @@ const AddLiquidityPage = () => {
                       <span className="text-sm text-gray-400">Deposit {displayToken0.symbol}</span>
                       <button
                         onClick={() => handleAmount0Change(balance0.toString())}
-                        className="text-sm text-gray-400 hover:text-cyan-400 transition-colors"
+                        className="text-sm text-gray-400 hover:text-yellow-400 transition-colors"
                       >
                         Balance: {balance0.toFixed(4)}
-                        <span className="ml-1 text-cyan-400">MAX</span>
+                        <span className="ml-1 text-yellow-400">MAX</span>
                       </button>
                     </div>
                     <div className="flex items-center gap-3">
@@ -496,10 +496,10 @@ const AddLiquidityPage = () => {
                       <span className="text-sm text-gray-400">Deposit {displayToken1.symbol}</span>
                       <button
                         onClick={() => handleAmount1Change(balance1.toString())}
-                        className="text-sm text-gray-400 hover:text-cyan-400 transition-colors"
+                        className="text-sm text-gray-400 hover:text-yellow-400 transition-colors"
                       >
                         Balance: {balance1.toFixed(4)}
-                        <span className="ml-1 text-cyan-400">MAX</span>
+                        <span className="ml-1 text-yellow-400">MAX</span>
                       </button>
                     </div>
                     <div className="flex items-center gap-3">
@@ -528,7 +528,7 @@ const AddLiquidityPage = () => {
                       <div className="text-sm text-blue-200">
                         <strong>Transaction:</strong>{' '}
                         <a 
-                          href={`https://pioscan.com/tx/${txHash}`}
+                          href={`https://bccscan.com/tx/${txHash}`}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="text-blue-400 hover:text-blue-300 underline"
@@ -544,7 +544,7 @@ const AddLiquidityPage = () => {
                     <Button
                       onClick={() => handleApprove(0)}
                       disabled={isApproving}
-                      className="w-full py-4 bg-cyan-500/20 text-cyan-400 hover:bg-cyan-500/30 rounded-xl"
+                      className="w-full py-4 bg-yellow-500/20 text-yellow-400 hover:bg-yellow-500/30 rounded-xl"
                     >
                       {isApproving ? <Loader2 className="w-4 h-4 mr-2 animate-spin" /> : null}
                       Approve {displayToken0.symbol}
@@ -555,7 +555,7 @@ const AddLiquidityPage = () => {
                     <Button
                       onClick={() => handleApprove(1)}
                       disabled={isApproving}
-                      className="w-full py-4 bg-cyan-500/20 text-cyan-400 hover:bg-cyan-500/30 rounded-xl"
+                      className="w-full py-4 bg-yellow-500/20 text-yellow-400 hover:bg-yellow-500/30 rounded-xl"
                     >
                       {isApproving ? <Loader2 className="w-4 h-4 mr-2 animate-spin" /> : null}
                       Approve {displayToken1.symbol}
@@ -631,7 +631,7 @@ const AddLiquidityPage = () => {
                           onClick={() => setRemovePercent([value])}
                           className={`flex-1 py-2 rounded-lg text-sm font-medium transition-all ${
                             removePercent[0] === value
-                              ? 'bg-cyan-500 text-black'
+                              ? 'bg-yellow-500 text-black'
                               : 'bg-white/5 text-white hover:bg-white/10'
                           }`}
                         >
@@ -665,7 +665,7 @@ const AddLiquidityPage = () => {
                   </div>
 
                   {/* Info */}
-                  <div className="p-3 rounded-xl bg-cyan-500/10 border border-cyan-500/30">
+                  <div className="p-3 rounded-xl bg-yellow-500/10 border border-yellow-500/30">
                     <div className="text-sm text-amber-200">
                       Tokens will be transferred to your wallet: {address?.slice(0, 10)}...
                     </div>
@@ -677,7 +677,7 @@ const AddLiquidityPage = () => {
                       <div className="text-sm text-blue-200">
                         <strong>Transaction:</strong>{' '}
                         <a 
-                          href={`https://pioscan.com/tx/${txHash}`}
+                          href={`https://bccscan.com/tx/${txHash}`}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="text-blue-400 hover:text-blue-300 underline"

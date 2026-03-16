@@ -1,21 +1,21 @@
 import { defaultWagmiConfig } from '@web3modal/wagmi/react/config';
 import { defineChain } from 'viem';
 
-// Define PIOGOLD custom chain
-export const piogoldChain = defineChain({
-  id: 42357,
-  name: 'PIOGOLD Mainnet',
+// Define Blokista custom chain
+export const blokistaChain = defineChain({
+  id: 639054,
+  name: 'Blokista Mainnet',
   nativeCurrency: {
-    name: 'PIO',
-    symbol: 'PIO',
+    name: 'BCC',
+    symbol: 'BCC',
     decimals: 18,
   },
   rpcUrls: {
-    default: { http: ['https://datasheed.pioscan.com'] },
-    public: { http: ['https://datasheed.pioscan.com'] },
+    default: { http: ['https://mainnet-rpc.bccscan.com'] },
+    public: { http: ['https://mainnet-rpc.bccscan.com'] },
   },
   blockExplorers: {
-    default: { name: 'PIOScan', url: 'https://pioscan.com' },
+    default: { name: 'BCCScan', url: 'https://bccscan.com' },
   },
 });
 
@@ -24,15 +24,15 @@ export const projectId = process.env.REACT_APP_WALLETCONNECT_PROJECT_ID || '5137
 
 // App metadata for WalletConnect
 export const metadata = {
-  name: 'PioSwap',
-  description: 'Decentralized Exchange on PIOGOLD Network',
-  url: typeof window !== 'undefined' ? window.location.origin : 'https://pioswap.ai',
-  icons: [typeof window !== 'undefined' ? `${window.location.origin}/logo.png` : 'https://pioswap.ai/logo.png'],
+  name: 'BlokSwap',
+  description: 'The Institutional-Grade Blockchain Exchange Platform on Blokista Network',
+  url: typeof window !== 'undefined' ? window.location.origin : 'https://blokswap.io',
+  icons: [typeof window !== 'undefined' ? `${window.location.origin}/logo.png` : 'https://blokswap.io/logo.png'],
 };
 
 // Wagmi config for WalletConnect
 export const wagmiConfig = defaultWagmiConfig({
-  chains: [piogoldChain],
+  chains: [blokistaChain],
   projectId,
   metadata,
   enableWalletConnect: true,

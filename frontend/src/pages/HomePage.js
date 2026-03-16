@@ -54,8 +54,8 @@ const HomePage = () => {
     <div className="min-h-[calc(100vh-64px)] bg-[#0d0d0d] relative overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-orange-500/5 rounded-full blur-[150px]" />
-        <div className="absolute bottom-0 left-1/4 w-[600px] h-[600px] bg-orange-500/3 rounded-full blur-[130px]" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-yellow-500/5 rounded-full blur-[150px]" />
+        <div className="absolute bottom-0 left-1/4 w-[600px] h-[600px] bg-amber-500/3 rounded-full blur-[130px]" />
       </div>
 
       {/* Animated Token Ticker */}
@@ -76,22 +76,22 @@ const HomePage = () => {
       {/* Hero Section */}
       <section className="relative z-10 max-w-6xl mx-auto px-4 pt-20 pb-24">
         <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-500/10 border border-amber-500/20 text-orange-400 text-sm font-medium mb-6">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-yellow-500/10 border border-yellow-500/20 text-yellow-400 text-sm font-medium mb-6">
             <Zap className="w-4 h-4" />
-            Powered by PIOGOLD Network
+            Powered by Blokista Network
           </div>
           <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
-            Swap <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500">anytime</span>,
+            Swap <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-amber-500">anytime</span>,
             <br />anywhere.
           </h1>
           <p className="text-xl text-gray-400 max-w-2xl mx-auto mb-10">
-            Trade tokens with zero app fees on PIOGOLD network. The trusted DeFi platform for fast, secure swaps.
+            The Institutional-Grade Blockchain Exchange Platform. Trade tokens with zero app fees on Blokista network.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link to="/swap">
               <Button
                 size="lg"
-                className="bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-amber-400 hover:to-orange-400 text-black font-semibold rounded-xl px-8 py-6 text-lg gap-2 group"
+                className="bg-gradient-to-r from-yellow-500 to-amber-500 hover:from-yellow-400 hover:to-amber-400 text-black font-semibold rounded-xl px-8 py-6 text-lg gap-2 group"
               >
                 Start Trading
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -120,8 +120,8 @@ const HomePage = () => {
               <div className="flex items-center gap-2 px-3 py-2 rounded-xl bg-white/10">
                 {tokens[0] ? (
                   <>
-                    <img src={tokens[0].logo} alt="PIO" className="w-6 h-6 rounded-full" />
-                    <span className="font-semibold text-white">PIO</span>
+                    <img src={tokens[0].logo} alt="BCC" className="w-6 h-6 rounded-full" />
+                    <span className="font-semibold text-white">BCC</span>
                   </>
                 ) : (
                   <span className="text-gray-400">Select</span>
@@ -141,7 +141,7 @@ const HomePage = () => {
               </div>
             </div>
             <Link to="/swap">
-              <Button className="w-full py-5 text-lg font-semibold bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-amber-400 hover:to-orange-400 text-black rounded-xl">
+              <Button className="w-full py-5 text-lg font-semibold bg-gradient-to-r from-yellow-500 to-amber-500 hover:from-yellow-400 hover:to-amber-400 text-black rounded-xl">
                 Get started
               </Button>
             </Link>
@@ -155,12 +155,12 @@ const HomePage = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-4">
             DeFi&apos;s leading protocol.
             <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-amber-500">
               Powering trillions.
             </span>
           </h2>
           <p className="text-gray-400 text-center max-w-2xl mx-auto mb-12">
-            PioSwap powers some of the most used DeFi products on PIOGOLD. Experience permissionless access, proven security, and dedicated support.
+            BlokSwap powers some of the most used DeFi products on Blokista. Experience permissionless access, proven security, and dedicated support.
           </p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             <Card className="bg-[#1a1a1a] border-white/5 p-6 rounded-2xl text-center">
@@ -189,23 +189,23 @@ const HomePage = () => {
           Built for all the ways you swap
         </h2>
         <p className="text-gray-400 text-center max-w-2xl mx-auto mb-12">
-          Whether you&apos;re a trader, liquidity provider, or developer — PioSwap has you covered.
+          Whether you&apos;re a trader, liquidity provider, or developer — BlokSwap has you covered.
         </p>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {/* Swap Card */}
           <Link to="/swap">
             <Card className="bg-[#1a1a1a] border-white/5 p-6 rounded-2xl hover:bg-white/5 transition-all group h-full">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center mb-4">
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-yellow-400 to-amber-500 flex items-center justify-center mb-4">
                 <ArrowLeftRight className="w-6 h-6 text-black" />
               </div>
-              <h3 className="text-xl font-bold text-white mb-2 group-hover:text-orange-400 transition-colors">
+              <h3 className="text-xl font-bold text-white mb-2 group-hover:text-yellow-400 transition-colors">
                 Instant Swaps
               </h3>
               <p className="text-gray-400 mb-4">
                 Swap tokens instantly with deep liquidity and competitive rates. Zero platform fees.
               </p>
-              <span className="text-orange-400 flex items-center gap-1">
+              <span className="text-yellow-400 flex items-center gap-1">
                 Start swapping <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </span>
             </Card>
@@ -239,7 +239,7 @@ const HomePage = () => {
                 Token Explorer
               </h3>
               <p className="text-gray-400 mb-4">
-                Discover trending tokens, track prices, and analyze market data on PIOGOLD network.
+                Discover trending tokens, track prices, and analyze market data on Blokista network.
               </p>
               <span className="text-green-400 flex items-center gap-1">
                 Explore tokens <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -251,8 +251,8 @@ const HomePage = () => {
         {/* Trust Features */}
         <div className="grid md:grid-cols-3 gap-6 mt-12">
           <div className="flex items-start gap-4">
-            <div className="p-3 rounded-xl bg-orange-500/10">
-              <Shield className="w-6 h-6 text-orange-400" />
+            <div className="p-3 rounded-xl bg-yellow-500/10">
+              <Shield className="w-6 h-6 text-yellow-400" />
             </div>
             <div>
               <h4 className="text-white font-semibold mb-1">Secure & Audited</h4>
@@ -265,7 +265,7 @@ const HomePage = () => {
             </div>
             <div>
               <h4 className="text-white font-semibold mb-1">Lightning Fast</h4>
-              <p className="text-gray-400 text-sm">Near-instant transactions on PIOGOLD network</p>
+              <p className="text-gray-400 text-sm">Near-instant transactions on Blokista network</p>
             </div>
           </div>
           <div className="flex items-start gap-4">
@@ -288,12 +288,12 @@ const HomePage = () => {
               <div className="flex items-center gap-2 mb-4">
                 <img 
                   src="/logo.png" 
-                  alt="PioSwap" 
+                  alt="BlokSwap" 
                   className="w-12 h-12 object-contain"
                 />
               </div>
               <p className="text-gray-400 text-sm">
-                The leading DEX on PIOGOLD network. Trade, earn, and build.
+                The Institutional-Grade Blockchain Exchange Platform on Blokista network.
               </p>
             </div>
             <div>
@@ -307,7 +307,7 @@ const HomePage = () => {
             <div>
               <h4 className="text-white font-semibold mb-4">Resources</h4>
               <ul className="space-y-2">
-                <li><a href="https://pioscan.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors flex items-center gap-1">Explorer <ExternalLink className="w-3 h-3" /></a></li>
+                <li><a href="https://bccscan.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors flex items-center gap-1">Explorer <ExternalLink className="w-3 h-3" /></a></li>
                 <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Documentation</a></li>
                 <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Help Center</a></li>
               </ul>
@@ -315,14 +315,14 @@ const HomePage = () => {
             <div>
               <h4 className="text-white font-semibold mb-4">Network</h4>
               <div className="text-gray-400 text-sm space-y-1">
-                <p>Chain ID: 42357</p>
-                <p>Symbol: PIO</p>
-                <p className="truncate">RPC: datasheed.pioscan.com</p>
+                <p>Chain ID: 639054</p>
+                <p>Symbol: BCC</p>
+                <p className="truncate">RPC: mainnet-rpc.bccscan.com</p>
               </div>
             </div>
           </div>
           <div className="border-t border-white/5 mt-8 pt-8 text-center text-gray-500 text-sm">
-            © 2025 PioSwap. All rights reserved.
+            © 2025 BlokSwap. All rights reserved.
           </div>
         </div>
       </footer>
