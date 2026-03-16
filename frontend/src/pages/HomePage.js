@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { useWallet } from '../context/WalletContext';
+import { useWallet } from '../context/WalletContextV2';
 import { formatCurrency } from '../data/mock';
 import { getTokens, getStats } from '../services/api';
 import { Button } from '../components/ui/button';

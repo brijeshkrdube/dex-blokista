@@ -2,7 +2,7 @@ import React, { useState, useMemo, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getTokens, getPools, createToken } from '../services/api';
 import { web3Service } from '../services/web3';
-import { useWallet } from '../context/WalletContext';
+import { useWallet } from '../context/WalletContextV2';
 import { toast } from 'sonner';
 import {
   Dialog,

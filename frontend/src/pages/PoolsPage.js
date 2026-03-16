@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { ethers } from 'ethers';
-import { useWallet } from '../context/WalletContext';
+import { useWallet } from '../context/WalletContextV2';
 import { FEE_TIERS, formatCurrency } from '../data/mock';
 import { getPools, createPool as createPoolAPI, registerPool, getTokens } from '../services/api';
 import { web3Service, CONTRACT_ADDRESSES, FACTORY_ABI } from '../services/web3';

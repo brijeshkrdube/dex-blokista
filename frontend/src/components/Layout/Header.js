@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { useWallet } from '../../context/WalletContext';
+import { useWeb3Modal } from '@web3modal/wagmi/react';
+import { useWallet } from '../../context/WalletContextV2';
 import { shortenAddress, NETWORK_CONFIG } from '../../data/mock';
 import { Button } from '../ui/button';
 import {
@@ -10,13 +11,6 @@ import {
   DropdownMenuTrigger,
   DropdownMenuSeparator
 } from '../ui/dropdown-menu';
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogDescription
-} from '../ui/dialog';
 import {
   Wallet,
   ChevronDown,
@@ -33,8 +27,8 @@ import {
 
 const Header = () => {
   const location = useLocation();
-  const { isConnected, address, connectWallet, disconnectWallet, isConnecting, networkConfig } = useWallet();
-  const [showWalletModal, setShowWalletModal] = useState(false);
+  const { open } = useWeb3Modal();
+  const { isConnected, address, disconnectWallet, isConnecting, networkConfig } = useWallet();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [copied, setCopied] = useState(false);
 
@@ -51,8 +45,7 @@ const Header = () => {
   };
 
   const handleConnect = async () => {
-    setShowWalletModal(false);
-    await connectWallet();
+    open();
   };
 
   return (
@@ -120,6 +113,13 @@ const Header = () => {
                     {copied ? 'Copied!' : 'Copy Address'}
                   </DropdownMenuItem>
                   <DropdownMenuItem
+                    onClick={() => open({ view: 'Account' })}
+                    className="text-gray-300 hover:text-white hover:bg-white/5 cursor-pointer"
+                  >
+                    <Settings className="w-4 h-4 mr-2" />
+                    Wallet Details
+                  </DropdownMenuItem>
+                  <DropdownMenuItem
                     onClick={() => window.open(`${networkConfig.explorer}/address/${address}`, '_blank')}
                     className="text-gray-300 hover:text-white hover:bg-white/5 cursor-pointer"
                   >
@@ -138,7 +138,7 @@ const Header = () => {
               </DropdownMenu>
             ) : (
               <Button
-                onClick={() => setShowWalletModal(true)}
+                onClick={handleConnect}
                 className="bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-400 hover:to-yellow-400 text-black font-semibold rounded-xl gap-2"
               >
                 <Wallet className="w-4 h-4" />
@@ -184,75 +184,6 @@ const Header = () => {
           </nav>
         </div>
       )}
-
-      {/* Wallet Connection Modal */}
-      <Dialog open={showWalletModal} onOpenChange={setShowWalletModal}>
-        <DialogContent className="bg-[#1a1a1a] border-white/10 text-white sm:max-w-md">
-          <DialogHeader>
-            <DialogTitle className="text-xl font-bold">Connect a Wallet</DialogTitle>
-            <DialogDescription className="text-gray-400">
-              Connect your wallet to start trading on PIOGOLD network
-            </DialogDescription>
-          </DialogHeader>
-          <div className="space-y-3 mt-4">
-            <button
-              onClick={handleConnect}
-              disabled={isConnecting}
-              className="w-full flex items-center gap-4 p-4 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-amber-500/50 transition-all group"
-            >
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center">
-                <Wallet className="w-5 h-5 text-black" />
-              </div>
-              <div className="flex-1 text-left">
-                <div className="font-semibold group-hover:text-amber-400 transition-colors">
-                  {isConnecting ? 'Connecting...' : 'PioGold Wallet'}
-                </div>
-                <div className="text-sm text-gray-500">Connect to PIOGOLD Mainnet</div>
-              </div>
-            </button>
-
-            <button
-              onClick={handleConnect}
-              disabled={isConnecting}
-              className="w-full flex items-center gap-4 p-4 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-blue-500/50 transition-all group"
-            >
-              <div className="w-10 h-10 rounded-xl bg-blue-500 flex items-center justify-center">
-                <svg className="w-6 h-6 text-white" viewBox="0 0 40 40" fill="currentColor">
-                  <path d="M12.23 14.88c4.29-4.18 11.25-4.18 15.54 0l.52.5a.55.55 0 010 .76l-1.77 1.72a.29.29 0 01-.39 0l-.71-.69c-2.99-2.92-7.84-2.92-10.84 0l-.76.74a.29.29 0 01-.39 0l-1.77-1.72a.55.55 0 010-.76l.57-.55zm19.19 3.57l1.57 1.53a.55.55 0 010 .76l-7.09 6.91a.58.58 0 01-.78 0l-5.03-4.9a.14.14 0 00-.19 0l-5.03 4.9a.58.58 0 01-.78 0L7 20.74a.55.55 0 010-.76l1.57-1.53a.58.58 0 01.78 0l5.03 4.9c.05.05.14.05.19 0l5.03-4.9a.58.58 0 01.78 0l5.03 4.9c.05.05.14.05.19 0l5.03-4.9a.58.58 0 01.78 0z" />
-                </svg>
-              </div>
-              <div className="flex-1 text-left">
-                <div className="font-semibold group-hover:text-blue-400 transition-colors">
-                  WalletConnect
-                </div>
-                <div className="text-sm text-gray-500">Scan with your wallet</div>
-              </div>
-            </button>
-
-            <button
-              onClick={handleConnect}
-              disabled={isConnecting}
-              className="w-full flex items-center gap-4 p-4 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-blue-600/50 transition-all group"
-            >
-              <div className="w-10 h-10 rounded-xl bg-[#0052FF] flex items-center justify-center">
-                <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z" />
-                  <rect x="9" y="9" width="6" height="6" rx="1" />
-                </svg>
-              </div>
-              <div className="flex-1 text-left">
-                <div className="font-semibold group-hover:text-blue-400 transition-colors">
-                  Coinbase Wallet
-                </div>
-                <div className="text-sm text-gray-500">Connect to Coinbase</div>
-              </div>
-            </button>
-          </div>
-          <p className="text-xs text-gray-500 text-center mt-4">
-            By connecting, you agree to PioSwap&apos;s Terms of Service
-          </p>
-        </DialogContent>
-      </Dialog>
     </header>
   );
 };

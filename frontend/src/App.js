@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { WalletProvider } from "./context/WalletContext";
+import { WalletProvider } from "./context/WalletContextV2";
 import Header from "./components/Layout/Header";
 import HomePage from "./pages/HomePage";
 import SwapPage from "./pages/SwapPage";

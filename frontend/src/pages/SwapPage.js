@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { ethers } from 'ethers';
-import { useWallet } from '../context/WalletContext';
+import { useWallet } from '../context/WalletContextV2';
 import { getTokens, getSwapQuote, executeSwap, getTradeHistory } from '../services/api';
 import { web3Service, CONTRACT_ADDRESSES } from '../services/web3';
 import TokenSelector from '../components/TokenSelector';
