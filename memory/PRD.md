@@ -120,8 +120,8 @@ A decentralized exchange (DEX) clone of Uniswap, built for the PIOGOLD blockchai
 ---
 
 ## URLs
-- **Frontend:** https://piogold-dex-preview.preview.emergentagent.com
-- **API:** https://piogold-dex-preview.preview.emergentagent.com/api
+- **Frontend:** https://dex-rebrand.preview.emergentagent.com
+- **API:** https://dex-rebrand.preview.emergentagent.com/api
 - **Block Explorer:** https://pioscan.com
 - **Production:** https://pioswap.ai (user's server)
 
