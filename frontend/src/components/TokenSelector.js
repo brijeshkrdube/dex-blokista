@@ -185,7 +185,7 @@ const TokenSelector = ({ open, onOpenChange, onSelect, selectedToken, excludeTok
     });
   }, [searchQuery, excludeToken, tokens, isContractAddress]);
 
-  const popularTokens = tokens.filter(t => ['bcc', 'usdt', 'usdc', 'beth'].includes(t.id));
+  const popularTokens = tokens.filter(t => ['bcc', 'bcusd', 'wbcc'].includes(t.id));
 
   const handleSelect = (token) => {
     onSelect(token);

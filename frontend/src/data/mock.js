@@ -16,8 +16,8 @@ export const TOKENS = [
     address: '0x0000000000000000000000000000000000000000',
     decimals: 18,
     logo: 'https://api.dicebear.com/7.x/shapes/svg?seed=bcc&backgroundColor=DAA520',
-    price: 2.45,
-    priceChange: 3.24,
+    price: 1.00,
+    priceChange: 0.00,
     isNative: true
   },
   {
@@ -27,176 +27,43 @@ export const TOKENS = [
     address: '0x0Ed138DaB3f9beEfeA779Af0b62fB3b2A220C4bc',
     decimals: 18,
     logo: 'https://api.dicebear.com/7.x/shapes/svg?seed=wbcc&backgroundColor=B8860B',
-    price: 2.45,
-    priceChange: 3.24
-  },
-  {
-    id: 'usdt',
-    symbol: 'USDT',
-    name: 'Tether USD',
-    address: '0x2222222222222222222222222222222222222222',
-    decimals: 6,
-    logo: 'https://api.dicebear.com/7.x/shapes/svg?seed=usdt&backgroundColor=26A17B',
-    price: 1.00,
-    priceChange: 0.01
-  },
-  {
-    id: 'usdc',
-    symbol: 'USDC',
-    name: 'USD Coin',
-    address: '0x3333333333333333333333333333333333333333',
-    decimals: 6,
-    logo: 'https://api.dicebear.com/7.x/shapes/svg?seed=usdc&backgroundColor=2775CA',
     price: 1.00,
     priceChange: 0.00
   },
   {
-    id: 'bgold',
-    symbol: 'BGOLD',
-    name: 'Blok Gold Token',
-    address: '0x4444444444444444444444444444444444444444',
+    id: 'bcusd',
+    symbol: 'BCUSD',
+    name: 'BC USD Stablecoin',
+    address: '0x3170cFa5B8cfD091ea15EB10f20307DB2FD9b7B8',
     decimals: 18,
-    logo: 'https://api.dicebear.com/7.x/shapes/svg?seed=bgold&backgroundColor=FFD700',
-    price: 156.78,
-    priceChange: -1.23
-  },
-  {
-    id: 'beth',
-    symbol: 'BETH',
-    name: 'Blok Ethereum',
-    address: '0x5555555555555555555555555555555555555555',
-    decimals: 18,
-    logo: 'https://api.dicebear.com/7.x/shapes/svg?seed=beth&backgroundColor=627EEA',
-    price: 2320.50,
-    priceChange: 0.58
-  },
-  {
-    id: 'bbtc',
-    symbol: 'BBTC',
-    name: 'Blok Bitcoin',
-    address: '0x6666666666666666666666666666666666666666',
-    decimals: 8,
-    logo: 'https://api.dicebear.com/7.x/shapes/svg?seed=bbtc&backgroundColor=F7931A',
-    price: 67234.00,
-    priceChange: 1.85
-  },
-  {
-    id: 'bdai',
-    symbol: 'BDAI',
-    name: 'Blok DAI',
-    address: '0x7777777777777777777777777777777777777777',
-    decimals: 18,
-    logo: 'https://api.dicebear.com/7.x/shapes/svg?seed=bdai&backgroundColor=F4B731',
+    logo: 'https://api.dicebear.com/7.x/shapes/svg?seed=bcusd&backgroundColor=2775CA',
     price: 1.00,
-    priceChange: 0.06
+    priceChange: 0.00
   }
 ];
 
 export const POOLS = [
   {
     id: 'pool1',
-    token0: TOKENS[0], // BCC
-    token1: TOKENS[2], // USDT
+    token0: TOKENS[1], // WBCC
+    token1: TOKENS[2], // BCUSD
     fee: 0.3,
-    tvl: 2456789.45,
-    volume24h: 345678.90,
-    apr: 24.5,
-    userLiquidity: 0
-  },
-  {
-    id: 'pool2',
-    token0: TOKENS[0], // BCC
-    token1: TOKENS[3], // USDC
-    fee: 0.3,
-    tvl: 1876543.21,
-    volume24h: 234567.80,
-    apr: 18.7,
-    userLiquidity: 0
-  },
-  {
-    id: 'pool3',
-    token0: TOKENS[5], // BETH
-    token1: TOKENS[2], // USDT
-    fee: 0.3,
-    tvl: 5678901.23,
-    volume24h: 567890.12,
-    apr: 32.1,
-    userLiquidity: 0
-  },
-  {
-    id: 'pool4',
-    token0: TOKENS[6], // BBTC
-    token1: TOKENS[2], // USDT
-    fee: 0.05,
-    tvl: 8765432.10,
-    volume24h: 876543.21,
-    apr: 15.8,
-    userLiquidity: 0
-  },
-  {
-    id: 'pool5',
-    token0: TOKENS[4], // BGOLD
-    token1: TOKENS[0], // BCC
-    fee: 1.0,
-    tvl: 987654.32,
-    volume24h: 98765.43,
-    apr: 45.2,
+    tvl: 0,
+    volume24h: 0,
+    apr: 0,
     userLiquidity: 0
   }
 ];
 
-export const USER_POSITIONS = [
-  {
-    id: 'pos1',
-    pool: POOLS[0],
-    liquidity: 5000,
-    token0Amount: 2500,
-    token1Amount: 2500,
-    unclaimedFees: 45.67,
-    inRange: true,
-    minPrice: 2.20,
-    maxPrice: 2.80
-  }
-];
+export const USER_POSITIONS = [];
 
-export const RECENT_TRANSACTIONS = [
-  {
-    id: 'tx1',
-    type: 'swap',
-    token0: TOKENS[0],
-    token1: TOKENS[2],
-    amount0: 100,
-    amount1: 245,
-    timestamp: Date.now() - 300000,
-    hash: '0xabc...123'
-  },
-  {
-    id: 'tx2',
-    type: 'add',
-    token0: TOKENS[0],
-    token1: TOKENS[3],
-    amount0: 500,
-    amount1: 500,
-    timestamp: Date.now() - 600000,
-    hash: '0xdef...456'
-  },
-  {
-    id: 'tx3',
-    type: 'remove',
-    token0: TOKENS[5],
-    token1: TOKENS[2],
-    amount0: 0.5,
-    amount1: 1160.25,
-    timestamp: Date.now() - 900000,
-    hash: '0xghi...789'
-  }
-];
+export const RECENT_TRANSACTIONS = [];
 
 export const PROTOCOL_STATS = {
-  totalVolume: '4.8T',
-  tvl: '2.7B',
-  totalSwappers: '120.5M',
-  volume24h: '4.1B'
+  totalVolume: '0',
+  tvl: '0',
+  totalSwappers: '0',
+  volume24h: '0'
 };
 
 export const FEE_TIERS = [

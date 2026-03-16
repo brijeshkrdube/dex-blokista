@@ -10,7 +10,7 @@ CONTRACT_ADDRESSES = {
     "FACTORY": "0xf29787D28e9B2B94ce8bdAbF8f768eaaDb29234b",
     "ROUTER": "0x07683f7Fb2Aa99fE4094b87baBd2bc254f19b270",
     "PAIR": "0xaDb89D867a5962cC6494865CfE4f20AA52AaDe40",
-    "USDT": "0x0000000000000000000000000000000000000000"
+    "BCUSD": "0x3170cFa5B8cfD091ea15EB10f20307DB2FD9b7B8"
 }
 
 # Initial token data for Blokista network
@@ -22,8 +22,8 @@ INITIAL_TOKENS = [
         "address": "0x0000000000000000000000000000000000000000",  # Native token
         "decimals": 18,
         "logo": "https://api.dicebear.com/7.x/shapes/svg?seed=bcc&backgroundColor=DAA520",
-        "price": 2.45,
-        "price_change_24h": 3.24,
+        "price": 1.00,
+        "price_change_24h": 0.00,
         "is_native": True
     },
     {
@@ -33,29 +33,29 @@ INITIAL_TOKENS = [
         "address": "0x0Ed138DaB3f9beEfeA779Af0b62fB3b2A220C4bc",
         "decimals": 18,
         "logo": "https://api.dicebear.com/7.x/shapes/svg?seed=wbcc&backgroundColor=B8860B",
-        "price": 2.45,
-        "price_change_24h": 3.24,
+        "price": 1.00,
+        "price_change_24h": 0.00,
         "is_native": False
     },
     {
-        "id": "usdt",
-        "symbol": "USDT",
-        "name": "Tether USD",
-        "address": "0x0000000000000000000000000000000000000001",
+        "id": "bcusd",
+        "symbol": "BCUSD",
+        "name": "BC USD Stablecoin",
+        "address": "0x3170cFa5B8cfD091ea15EB10f20307DB2FD9b7B8",
         "decimals": 18,
-        "logo": "https://api.dicebear.com/7.x/shapes/svg?seed=usdt&backgroundColor=26A17B",
+        "logo": "https://api.dicebear.com/7.x/shapes/svg?seed=bcusd&backgroundColor=2775CA",
         "price": 1.00,
-        "price_change_24h": 0.01,
+        "price_change_24h": 0.00,
         "is_native": False
     }
 ]
 
-# Initial pool data - WBCC/USDT pool
+# Initial pool data - WBCC/BCUSD pool
 INITIAL_POOLS = [
     {
         "id": "pool1",
         "token0_address": "0x0Ed138DaB3f9beEfeA779Af0b62fB3b2A220C4bc",  # WBCC
-        "token1_address": "0x0000000000000000000000000000000000000001",  # USDT placeholder
+        "token1_address": "0x3170cFa5B8cfD091ea15EB10f20307DB2FD9b7B8",  # BCUSD
         "pair_address": "0xaDb89D867a5962cC6494865CfE4f20AA52AaDe40",
         "fee": 0.3,
         "tvl": 0,
