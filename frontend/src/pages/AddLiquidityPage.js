@@ -121,7 +121,7 @@ const AddLiquidityPage = () => {
     );
   }
 
-  // Display tokens (show PIO instead of WBCC)
+  // Display tokens (show BCC instead of WBCC)
   const displayToken0 = getDisplayToken(pool.token0);
   const displayToken1 = getDisplayToken(pool.token1);
 

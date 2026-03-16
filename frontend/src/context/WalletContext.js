@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useCallback, useEffect, useRef } from 'react';
-import { web3Service, PIOGOLD_NETWORK } from '../services/web3';
+import { web3Service, BLOKISTA_NETWORK } from '../services/web3';
 
 const WalletContext = createContext();
 
@@ -28,17 +28,17 @@ export const WalletProvider = ({ children }) => {
     if (!walletAddress) return;
 
     try {
-      // Get native PIO balance
+      // Get native BCC balance
       const nativeBalance = await web3Service.getNativeBalance(walletAddress);
       
       // Fetch real balances from blockchain for each token
       const realBalances = {
-        'pio': parseFloat(nativeBalance)
+        'bcc': parseFloat(nativeBalance)
       };
       
-      // Token addresses on PIOGOLD
+      // Token addresses on BLOKISTA
       const tokenAddresses = {
-        'wpio': '0x9Da12b8CF8B94f2E0eedD9841E268631aF03aDb1',
+        'wbcc': '0x9Da12b8CF8B94f2E0eedD9841E268631aF03aDb1',
         'usdt': '0x75C681D7d00b6cDa3778535Bba87E433cA369C96'
       };
       
@@ -58,8 +58,8 @@ export const WalletProvider = ({ children }) => {
       console.error('Error loading balances:', err);
       // Set zero balances on error - don't use fake values
       setBalances({
-        'pio': 0,
-        'wpio': 0,
+        'bcc': 0,
+        'wbcc': 0,
         'usdt': 0
       });
     }
@@ -74,7 +74,7 @@ export const WalletProvider = ({ children }) => {
       setAddress(result.address);
       setChainId(result.chainId);
       setIsConnected(true);
-      setIsCorrectNetwork(result.chainId === PIOGOLD_NETWORK.chainId);
+      setIsCorrectNetwork(result.chainId === BLOKISTA_NETWORK.chainId);
       
       await loadBalances(result.address);
       
@@ -138,7 +138,7 @@ export const WalletProvider = ({ children }) => {
 
     const handleChainChanged = (e) => {
       setChainId(e.detail.chainId);
-      setIsCorrectNetwork(e.detail.chainId === PIOGOLD_NETWORK.chainId);
+      setIsCorrectNetwork(e.detail.chainId === BLOKISTA_NETWORK.chainId);
     };
 
     const handleDisconnected = () => {
@@ -172,7 +172,7 @@ export const WalletProvider = ({ children }) => {
     getBalance,
     switchNetwork,
     loadBalances,
-    networkConfig: PIOGOLD_NETWORK,
+    networkConfig: BLOKISTA_NETWORK,
     web3Service
   };
 

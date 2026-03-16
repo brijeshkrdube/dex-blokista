@@ -1,4 +1,13 @@
-/* PioSwap DEX Styles */
+/* BlokSwap DEX Styles */
+
+/* Global Font */
+* {
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
 
 /* Scrollbar Styling */
 ::-webkit-scrollbar {

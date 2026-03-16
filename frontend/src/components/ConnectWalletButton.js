@@ -25,7 +25,7 @@ const ConnectWalletButton = () => {
       <Button
         onClick={() => open()}
         data-testid="connect-wallet-btn"
-        className="bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-amber-400 hover:to-orange-400 text-black font-semibold rounded-xl gap-2"
+        className="bg-gradient-to-r from-yellow-500 to-amber-500 hover:from-yellow-400 hover:to-amber-400 text-black font-semibold rounded-xl gap-2"
       >
         <Wallet className="w-4 h-4" />
         Connect Wallet
@@ -80,7 +80,7 @@ const ConnectWalletButton = () => {
             <span className="w-4 h-4 mr-2 flex items-center justify-center">
               {isCorrectNetwork ? '✓' : '⚠'}
             </span>
-            {isCorrectNetwork ? 'PIOGOLD Network' : 'Switch Network'}
+            {isCorrectNetwork ? 'Blokista Network' : 'Switch Network'}
           </DropdownMenuItem>
           <DropdownMenuSeparator className="bg-white/10" />
           <DropdownMenuItem

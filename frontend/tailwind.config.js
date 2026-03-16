@@ -7,20 +7,22 @@ module.exports = {
   ],
   theme: {
         extend: {
+                fontFamily: {
+                        sans: ['Roboto', 'sans-serif'],
+                        roboto: ['Roboto', 'sans-serif'],
+                },
                 borderRadius: {
                         lg: 'var(--radius)',
                         md: 'calc(var(--radius) - 2px)',
                         sm: 'calc(var(--radius) - 4px)'
                 },
                 colors: {
-                        // PioSwap brand colors
-                        pio: {
-                                orange: '#FFA500',
-                                gold: '#FFD700',
-                                yellow: '#FFFF00',
-                                cyan: '#00CED1',
-                                teal: '#20B2AA',
-                                lime: '#32CD32'
+                        // BlokSwap brand colors
+                        blok: {
+                                gold: '#DAA520',
+                                yellow: '#EAB308',
+                                amber: '#F59E0B',
+                                darkGold: '#B8860B',
                         },
                         background: 'hsl(var(--background))',
                         foreground: 'hsl(var(--foreground))',

@@ -128,7 +128,7 @@ const TokenSelector = ({ open, onOpenChange, onSelect, selectedToken, excludeTok
         );
         setHasPoolForCustomToken(poolExists);
       } else {
-        setCustomTokenError('Could not fetch token information. Make sure this is a valid ERC-20 token contract on PIOGOLD network.');
+        setCustomTokenError('Could not fetch token information. Make sure this is a valid ERC-20 token contract on Blokista network.');
         toast.error('Token not found', {
           description: 'The address may not be a valid ERC-20 token contract.'
         });
@@ -185,7 +185,7 @@ const TokenSelector = ({ open, onOpenChange, onSelect, selectedToken, excludeTok
     });
   }, [searchQuery, excludeToken, tokens, isContractAddress]);
 
-  const popularTokens = tokens.filter(t => ['pio', 'usdt', 'usdc', 'peth'].includes(t.id));
+  const popularTokens = tokens.filter(t => ['bcc', 'usdt', 'usdc', 'beth'].includes(t.id));
 
   const handleSelect = (token) => {
     onSelect(token);
@@ -227,7 +227,7 @@ const TokenSelector = ({ open, onOpenChange, onSelect, selectedToken, excludeTok
             />
           </div>
           {isContractAddress && !customTokenLoading && !customTokenInfo && !customTokenError && (
-            <p className="text-xs text-cyan-400 mt-2 flex items-center gap-1">
+            <p className="text-xs text-yellow-400 mt-2 flex items-center gap-1">
               <AlertCircle className="w-3 h-3" />
               Contract address detected - fetching token info...
             </p>
@@ -239,8 +239,8 @@ const TokenSelector = ({ open, onOpenChange, onSelect, selectedToken, excludeTok
           <div className="px-4 pb-3">
             {customTokenLoading && (
               <div className="flex items-center gap-2 p-3 rounded-xl bg-white/5">
-                <Loader2 className="w-5 h-5 text-cyan-400 animate-spin" />
-                <span className="text-gray-400">Fetching token info from PIOGOLD network...</span>
+                <Loader2 className="w-5 h-5 text-yellow-400 animate-spin" />
+                <span className="text-gray-400">Fetching token info from Blokista network...</span>
               </div>
             )}
             
